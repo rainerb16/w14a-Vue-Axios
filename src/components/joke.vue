@@ -4,19 +4,23 @@
 
 <script>
 export default {
-  name: "joke",
+  name: "joke-main",
 
-  // props: {
-  //   joke: {
-  //     type: String,
-  //     required: true
-  //   }
-  // },
-  data: function() {
-    return {
-      normalJoke: this.$store.state.joke
-    };
+  props: {
+    joke: {
+      type: String
+    }
+  },
+  methods: {
+    getNewJoke: function() {
+      this.$root.$commit("getNewJoke", this.joke);
+    }
   }
+  // data: function() {
+  //   return {
+  //     normalJoke: this.$store.state.joke
+  //   };
+  // }
 };
 </script>
 

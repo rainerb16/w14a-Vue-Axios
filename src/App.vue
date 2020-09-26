@@ -2,20 +2,20 @@
   <div id="app">
     <h1 id="title-content">Chuck Norris & Programmer Jokes... Together!</h1>
     <h3 id="subtitle-content">Why? Who knows...</h3>
-    <normal-joke />
+    <br />
     <joke-button />
   </div>
 </template>
 
 <script>
 import JokeButton from "./components/joke-button.vue";
-import NormalJoke from "./components/normal-joke";
+// import NormalJoke from "./components/normal-joke";
 
 export default {
   name: "App",
   components: {
-    JokeButton,
-    NormalJoke
+    JokeButton
+    // NormalJoke
   }
 };
 </script>

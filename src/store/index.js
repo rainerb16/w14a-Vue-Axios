@@ -5,17 +5,13 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    Joke: ""
+    joke: ""
   },
   mutations: {
-    updateJoke: function(state, data) {
-      state.joke = data;
+    updateJoke: function(state, joke) {
+      state.joke = joke;
     }
   },
-  getters: {
-    normalJoke: function(state) {
-      return state.data.joke;
-    }
-  },
+  actions: {},
   modules: {}
 });

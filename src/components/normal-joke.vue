@@ -1,30 +1,24 @@
 <template>
   <div>
     <joke-main />
-    <h4>{{ requestNewJoke.joke }}</h4>
+    <joke-button>{{ joke }}</joke-button>
   </div>
 </template>
 
 <script>
 import JokeMain from "./joke.vue";
+import JokeButton from "./joke-button.vue";
+
 export default {
   name: "normal-joke",
   components: {
-    JokeMain
+    JokeMain,
+    JokeButton
   },
-  // computed: function() {
-  //     return this.$store.getters.joke;
-  //   }
-  // },
-  // data: function() {
-  //   return {
-  //     normalJoke: this.$store.state.joke
-  //   };
-  // }
-  methods: {
-    requestNewJoke() {
-      this.$store.commit("joke", this.joke);
-    }
+  data() {
+    return {
+      joke: this.$store.state.joke
+    };
   }
 };
 </script>
