@@ -7,6 +7,7 @@
 <script>
 export default {
   name: "loud-joke",
+
   computed: {
     loudJoke: function() {
       return this.$store.getters.loudJoke;

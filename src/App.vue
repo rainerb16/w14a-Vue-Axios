@@ -2,16 +2,10 @@
   <div id="app">
     <h1 id="title-content">Chuck Norris & Programmer Jokes... Together!</h1>
     <h3 id="subtitle-content"><i>Why? Who knows...</i></h3>
+    <normal-joke v-if="showType === 'normal'" key="normal"> </normal-joke>
+    <loud-joke v-else-if="showType === 'loud'" key="loud"> </loud-joke>
+    <snake-joke v-else-if="showType === 'snake'" key="snake"> </snake-joke>
     <br />
-    <normal-joke
-      v-if="showJoke === 'normalJoke'"
-      key="normalJoke"
-    ></normal-joke>
-    <snake-joke
-      v-else-if="showJoke === 'snakeJoke'"
-      key="snakeJoke"
-    ></snake-joke>
-    <loud-joke v-else-if="showJoke === 'loudJoke'" key="loudJoke"></loud-joke>
     <br />
     <joke-button />
     <br />
@@ -24,22 +18,21 @@
 </template>
 
 <script>
-import NormalJoke from "./components/normal-joke.vue";
-import LoudJoke from "./components/loud-joke.vue";
-import SnakeJoke from "./components/snake-joke.vue";
-import JokeButton from "./components/joke-button.vue";
-
+import JokeButton from "./components/joke-button";
+import LoudJoke from "./components/loud-joke";
+import SnakeJoke from "./components/snake-joke";
+import NormalJoke from "./components/normal-joke";
 export default {
   name: "App",
   components: {
-    NormalJoke,
+    JokeButton,
     LoudJoke,
     SnakeJoke,
-    JokeButton
+    NormalJoke
   },
   computed: {
-    showJoke: function() {
-      return this.$store.state.showJoke;
+    showType: function() {
+      return this.$store.state.showType;
     }
   }
 };

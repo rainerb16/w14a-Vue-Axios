@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ normalJoke }}</p>
+    <p>{{ joke }}</p>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: "normal-joke",
   computed: {
-    normalJoke: function() {
+    joke: function() {
       return this.$store.getters.normalJoke;
     }
   }

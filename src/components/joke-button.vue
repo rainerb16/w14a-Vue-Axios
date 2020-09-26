@@ -1,36 +1,44 @@
 <template>
-  <div>
-    <button id="button" @click="getJoke">Get New Joke</button>
-    <br />
-    <br />
-    <button id="button" @click="getNormalJoke">Make it Normal</button>
-    <button id="button" @click="getLoudJoke">Make it Loud</button>
-    <button id="button" @click="getSnakeJoke">Make it Snake</button>
+  <div id="grid">
+    <button class="button" @click="getJoke">Get Joke</button>
+    <div></div>
+    <button class="button" @click="updateType('loud')">Make it Loud</button>
+    <button class="button" @click="updateType('snake')">Make it Snake</button>
+    <button class="button" @click="updateType('normal')">Make it Normal</button>
+    <div></div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "joke-button",
+
   methods: {
-    getJoke() {
-      this.$store.commit("getJoke");
+    getJoke: function() {
+      axios
+        .request({
+          url: "https://geek-jokes.sameerkumar.website/api?format=json",
+          method: "GET"
+        })
+        .then(response => {
+          console.log(response);
+          this.$store.commit("updateJoke", response.data.joke);
+        })
+        .catch(error => {
+          console.log(error);
+          this.joke = "Something went wrong!";
+        });
     },
-    getNormalJoke() {
-      this.$store.commit("normalJoke");
-    },
-    getLoudJoke() {
-      this.$store.commit("loudJoke");
-    },
-    getSnakeJoke() {
-      this.$store.commit("snakeJoke");
+    updateType: function(type) {
+      this.$store.commit("updateJokeType", type);
     }
   }
 };
 </script>
 
 <style scoped>
-#button {
+.button {
   border: 1px solid black;
   padding: 10px;
   background-color: maroon;

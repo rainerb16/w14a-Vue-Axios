@@ -1,6 +1,6 @@
 <template>
   <div>
-    <p>{{ snakeJoke }}</p>
+    <p>{{ joke }}</p>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 export default {
   name: "snake-joke",
   computed: {
-    snakeJoke: function() {
+    joke: function() {
       return this.$store.getters.snakeJoke;
     }
   }
