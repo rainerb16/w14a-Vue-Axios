@@ -1,35 +1,29 @@
 <template>
   <div>
-    <h4>{{ joke }}</h4>
-    <button id="button" @click="getJoke">Get Joke</button>
+    <button id="button" @click="getJoke">Get New Joke</button>
+    <br />
+    <br />
+    <button id="button" @click="getNormalJoke">Make it Normal</button>
+    <button id="button" @click="getLoudJoke">Make it Loud</button>
+    <button id="button" @click="getSnakeJoke">Make it Snake</button>
   </div>
 </template>
 
 <script>
-import axios from "axios";
-
 export default {
   name: "joke-button",
-  data() {
-    return {
-      joke: ""
-    };
-  },
   methods: {
-    getJoke: function() {
-      axios
-        .request({
-          url: "https://geek-jokes.sameerkumar.website/api?format=json",
-          method: "GET"
-        })
-        .then(response => {
-          this.joke = response.data.joke;
-        })
-        .catch(error => {
-          console.log(error);
-          this.joke = "There was an Error";
-        });
-      // this.$store.commit("updateJoke");
+    getJoke() {
+      this.$store.commit("getJoke");
+    },
+    getNormalJoke() {
+      this.$store.commit("normalJoke");
+    },
+    getLoudJoke() {
+      this.$store.commit("loudJoke");
+    },
+    getSnakeJoke() {
+      this.$store.commit("snakeJoke");
     }
   }
 };
@@ -43,5 +37,7 @@ export default {
   color: white;
   font-weight: bold;
   cursor: pointer;
+  margin: 1vw;
+  border-radius: 10%;
 }
 </style>

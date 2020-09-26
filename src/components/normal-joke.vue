@@ -1,24 +1,16 @@
 <template>
   <div>
-    <joke-main />
-    <joke-button>{{ joke }}</joke-button>
+    <p>{{ normalJoke }}</p>
   </div>
 </template>
 
 <script>
-import JokeMain from "./joke.vue";
-import JokeButton from "./joke-button.vue";
-
 export default {
   name: "normal-joke",
-  components: {
-    JokeMain,
-    JokeButton
-  },
-  data() {
-    return {
-      joke: this.$store.state.joke
-    };
+  computed: {
+    normalJoke: function() {
+      return this.$store.getters.normalJoke;
+    }
   }
 };
 </script>
